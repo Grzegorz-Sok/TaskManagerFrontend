@@ -1,0 +1,75 @@
+<h1>Tasks</h1>
+
+<button type="button" (click)="showTasks()">Show all!!</button>
+<button type="button" (click)="showUnfinished()">Show unfinished tasks after deadline!!</button>
+<button type="button" (click)="showSortedByDate()">Show tasks sorted by date!!</button>
+<button type="button" (click)="showSortedByPriority()">Show tasks sorted by priority!!</button>
+
+<table>
+  <thead>
+  <th>Id</th>
+  <th>Priority</th>
+  <th>Description</th>
+  <th>Doers</th>
+  <th>Deadline</th>
+  <th>For who</th>
+  <th>Status</th>
+  <th>Meeting Id</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let task of tasks">
+    <td>{{task.id}}</td>
+    <td>{{task.priority}}</td>
+    <td>{{task.description}}</td>
+    <td>{{task.doers}}</td>
+    <td>{{task.deadline}}</td>
+    <td>{{task.type}}</td>
+    <td>{{task.status}}</td>
+    <td>{{task.meeting == null ? task.meeting : task.meeting.id}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<h1>Add Task</h1>
+<label for="TPriority">Task priority:</label>
+<input type="number" id="TPriority" #priority><br>
+<label for="TDescription">Task description:</label>
+<input type="text" id="TDescription" #description><br>
+<label for="TDeadline">Task deadline:</label>
+<input type="datetime-local" id="TDeadline" #deadline><br>
+<label for="Ttype">Task for who (must equal employee's role in order to work):</label>
+<input type="text" id="Ttype" #type><br>
+<label for="Tstatus">Task status (done / in_progress):</label>
+<input type="text" id="Tstatus" #status><br>
+<button type="button" (click)="addTask(priority.value, description.value, deadline.value, type.value, status.value)">Add task!!</button>
+
+<h1>Delete Task by id</h1>
+<label for="TId">Task id:</label>
+<input type="number" id="TId" #TiD><br>
+<button type="button" (click)="deleteTask(TiD.value)">Delete task!!</button>
+
+
+<h1>Assign Task</h1>
+<label for="empId">Employee Id:</label>
+<input type="number" id="empId" #employeeId><br>
+<label for="taskId">Task Id:</label>
+<input type="number" id="taskId" #taskId><br>
+<button type="button" (click)="assignTask(employeeId.value, taskId.value)">Assign!!</button>
+
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>

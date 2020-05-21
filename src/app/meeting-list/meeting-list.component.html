@@ -1,0 +1,64 @@
+<h1>Meetings</h1>
+
+<button type="button" (click)="showMeetings()">Show!!</button>
+
+<table>
+  <thead>
+  <th>Id</th>
+  <th>Time</th>
+  <th>Place</th>
+  <th>Participants</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let meeting of meetings">
+    <td>{{meeting.id}}</td>
+    <td>{{meeting.time}}</td>
+    <td>{{meeting.place}}</td>
+    <td>{{meeting.participants}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<h1>Add Meeting</h1>
+<label for="MeetingTime">Meeting time :</label>
+<input type="datetime-local" id="MeetingTime" #time><br>
+<label for="MeetingPlace">Meeting place :</label>
+<input type="text" id="MeetingPlace" #place><br>
+<button type="button" (click)="addMeeting(time.value, place.value)">Add meeting!!</button>
+
+<h1>Delete meeting by id</h1>
+<label for="MeId">Meeting id:</label>
+<input type="number" id="MeId" #MiD><br>
+<button type="button" (click)="deleteMeeting(MiD.value)">Delete meeting!!</button>
+
+<h1>Assign Meeting</h1>
+<label for="TId">Task Id:</label>
+<input type="number" id="TId" #taskMeetingId><br>
+<label for="MeetingTime">Meeting Id:</label>
+<input type="number" id="MeetingId" #meetingId><br>
+<button type="button" (click)="assignMeeting(taskMeetingId.value, meetingId.value)">Assign!!</button>
+
+<h1>Add participant</h1>
+<label for="ParticipantId">Participant Id:</label>
+<input type="number" id="ParticipantId" #participantId><br>
+<label for="MId">Meeting Id:</label>
+<input type="number" id="MId" #mId><br>
+<button type="button" (click)="addParticipant(participantId.value, mId.value)">Add participant!!</button>
+
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>

@@ -1,0 +1,60 @@
+<h1>Employees</h1>
+
+<button type="button" (click)="showEmployees()">Show all!!</button>
+
+<table>
+  <thead>
+  <th>Id</th>
+  <th>Name</th>
+  <th>Surname</th>
+  <th>Role</th>
+  <th>Task</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let employee of employees">
+    <td>{{employee.id}}</td>
+    <td>{{employee.name}}</td>
+    <td>{{employee.surname}}</td>
+    <td>{{employee.role}}</td>
+    <td>{{employee.task == null ? employee.task : employee.task.description}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<script>
+  var a = employees;
+</script>
+
+<h1>Add Employee</h1>
+<label for="EmpName">Employee name:</label>
+<input type="text" id="EmpName"#name><br>
+<label for="EmpSurname">Employee surname: </label>
+<input type="text" id="EmpSurname" #surname><br>
+<label for="EmpRole">Employee role:</label>
+<input type="text" id="EmpRole" #role><br>
+<button type="button" (click)="addEmployee(name.value, surname.value, role.value)">Add!!</button>
+
+<h1>Delete employee by id</h1>
+<label for="EId">Employee id:</label>
+<input type="number" id="EId" #EiD><br>
+<button type="button" (click)="deleteEmployee(EiD.value)">Delete employee!!</button>
+
+
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
